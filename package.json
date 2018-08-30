@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.305.0",
+    "serverless": "^1.30.3",
+    "uuid": "^3.3.2"
+  }
 }
