@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest --config test/unit/jest.unit.config.js --coverage",
+    "test:integration": "jest --config test/integration/jest.integration.config.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +15,13 @@
     "aws-sdk": "^2.305.0",
     "serverless": "^1.30.3",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "dotenv": "^6.1.0",
+    "jest": "^23.6.0",
+    "jest-trx-results-processor": "0.0.7",
+    "supertest": "^3.3.0",
+    "testdouble": "^3.8.2",
+    "testdouble-jest": "^2.0.0"
   }
 }

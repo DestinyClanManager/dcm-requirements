@@ -15,6 +15,7 @@ provider:
   region: us-east-1
   environment:
     REQUIREMENTS_TABLE: dcm_requirements_${opt:stage, self:provider.stage}
+    LOGGING_ENABLED: true
 
   iamRoleStatements:
     - Effect: Allow
@@ -30,7 +31,7 @@ provider:
 # The `functions` block defines what code to deploy
 functions:
   createClanRequirement:
-    handler: handler.createClanRequirement
+    handler: src/handler.createClanRequirement
     events:
       - http:
           path: requirement
@@ -38,7 +39,7 @@ functions:
           cors: true
 
   getClanRequirements:
-    handler: handler.getClanRequirements
+    handler: src/handler.getClanRequirements
     events:
       - http:
           path: requirement
@@ -55,18 +56,21 @@ resources:
       DeletionPolicy: Retain
       Properties:
         AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-
           - AttributeName: clanId
+            AttributeType: S
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-
           - AttributeName: clanId
+            KeyType: HASH
+          - AttributeName: id
             KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:provider.environment.REQUIREMENTS_TABLE}
+
+package:
+  exclude:
+    - test/**
+    - .vscode/**
