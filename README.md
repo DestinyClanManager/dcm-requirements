@@ -1,5 +1,7 @@
 # dcm-requirements
 
+[![Build status](https://heymrcarter.visualstudio.com/Destiny%20Clan%20Manager/_apis/build/status/DCM-Requirements)](https://heymrcarter.visualstudio.com/Destiny%20Clan%20Manager/_build/latest?definitionId=19)
+
 > Clan membership requirements microservice for Destiny Clan Manager
 
 ## Endpoints
